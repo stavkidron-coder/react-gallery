@@ -14,34 +14,46 @@ class App extends Component {
     this.getPics();
   }
 
-  getPics = () => {
-    console.log('in getPics');
+  likeButton = (itemId) => {
+    console.log('in PUT:', itemId);
     Axios({
-      method: 'GET',
-      url: '/gallery'
+      method: 'PUT',
+      url: `/gallery/like/${itemId}`
     }).then((response) => {
-      console.log('Get Response:', response.data); //CONTINUE FROM HERE -- Need to push image data to gallery items array
-      this.setState({
-        galleryItems: response.data
-      });
+      console.log('PUT request successful!', response.data);
+      this.getPics();
     }).catch((error) => {
-      console.log('Error in GET:'.error);
+      console.log('ERROR in PUT', error);
     });
   }
 
-
+  getPics = () => {
+    Axios({ // get images
+      method: 'GET',
+      url: '/gallery'
+    }).then((response) => {
+      console.log('Get Response:', response.data);
+      this.setState({
+        galleryItems: response.data // push images into the galleryItems array
+      });
+    }).catch((error) => {
+      console.log('Error in GET:', error);
+    });
+  }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <header className="jumbotron">
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br/>
-        <p>Gallery goes here</p>
-        <main>
-        <GalleryList imgs={this.state.galleryItems}/>     
-        </main>
+        <div className="container">
+          <p>Gallery goes here</p>
+          <main>
+              <GalleryList imgs={this.state.galleryItems} like={this.likeButton}/>
+          </main>
+        </div>
       </div>
     );
   }
