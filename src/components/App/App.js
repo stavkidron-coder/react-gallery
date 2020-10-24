@@ -1,7 +1,36 @@
+import Axios from 'axios';
 import React, { Component } from 'react';
+import GalleryList from '../GalleryList/GalleryList';
 import './App.css';
 
 class App extends Component {
+
+  state = {
+    galleryItems: []
+  }
+
+  componentDidMount = () => {
+    console.log('App is mounted');
+    this.getPics();
+  }
+
+  getPics = () => {
+    console.log('in getPics');
+    Axios({
+      method: 'GET',
+      url: '/gallery'
+    }).then((response) => {
+      console.log('Get Response:', response.data); //CONTINUE FROM HERE -- Need to push image data to gallery items array
+      this.setState({
+        galleryItems: response.data
+      });
+    }).catch((error) => {
+      console.log('Error in GET:'.error);
+    });
+  }
+
+
+
   render() {
     return (
       <div className="App">
@@ -10,7 +39,12 @@ class App extends Component {
         </header>
         <br/>
         <p>Gallery goes here</p>
-        <img src="images/goat_small.jpg"/>
+        <main>
+            {this.state.galleryItems.map((img) => {
+              return <img key={img.id} className="imgs" src={img.path} alt=""></img>
+            })}
+        </main>
+        <GalleryList/>
       </div>
     );
   }
