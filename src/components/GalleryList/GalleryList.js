@@ -3,10 +3,12 @@ import React, {Component} from 'react';
 class GalleryList extends Component {
 
     render(){
-
         return(
-            // Needs to bring in gallery items
-            <p></p>
+           <div>
+            {this.props.imgs.map((img) => {
+                return <img key={img.id} className="imgs" src={img.path} alt=""></img>
+              })}
+            </div>
         )
 
     }

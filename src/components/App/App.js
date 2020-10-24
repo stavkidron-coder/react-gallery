@@ -40,11 +40,8 @@ class App extends Component {
         <br/>
         <p>Gallery goes here</p>
         <main>
-            {this.state.galleryItems.map((img) => {
-              return <img key={img.id} className="imgs" src={img.path} alt=""></img>
-            })}
+        <GalleryList imgs={this.state.galleryItems}/>     
         </main>
-        <GalleryList/>
       </div>
     );
   }
