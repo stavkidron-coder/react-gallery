@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React, { Component } from 'react';
 import GalleryList from '../GalleryList/GalleryList';
+import Header from '../Header/Header';
 import './App.css';
 
 class App extends Component {
@@ -44,16 +45,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="jumbotron">
-          <h1 className="App-title">Gallery of my life</h1>
-        </header>
-        <br/>
-        <div className="container">
-          <p>Gallery goes here</p>
+
+        <Header/>
+
+        <div className="container body">
+          <div className="title">
+            <h4>My Gallery</h4>
+            <hr/>
+          </div>
           <main>
               <GalleryList imgs={this.state.galleryItems} like={this.likeButton}/>
           </main>
         </div>
+
       </div>
     );
   }

@@ -16,7 +16,7 @@ class GalleryItems extends Component {
         if(this.state.renderImg){
             return <img
                 src={this.props.img.path}
-                className="imgs"
+                className="imgs card-img-top"
                 alt={this.props.img.description}
                 onClick={this.toggleImg}
             />
@@ -28,9 +28,13 @@ class GalleryItems extends Component {
     render() {
         return(
             <div className="imgWrapper">
-                {this.renderItemOrDesc()}
-                <button onClick={() => this.props.like(this.props.img.id)}>Like</button>
-                <p>{this.props.img.likes} likes</p>
+                <div className="card">
+                        {this.renderItemOrDesc()}
+                    <div className="card-body">
+                        <p className="card-text">{this.props.img.likes} likes</p>
+                        <button className="btn btn-outline-primary" onClick={() => this.props.like(this.props.img.id)}>Like</button>
+                    </div>
+                </div>
             </div>
         )
     }
