@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const galleryItems = require('../modules/gallery.data');
+// const galleryItems = require('../modules/gallery.data');
 const pool = require('../modules/pool');
 
 // DO NOT MODIFY THIS FILE FOR BASE MODE
@@ -8,7 +8,7 @@ const pool = require('../modules/pool');
 // PUT Route
 router.put('/like/:id', (req, res) => {
     console.log("in PUT", req.params);
-    const queryText = `UPDATE "images" SET "likes" = "likes"+1 WHERE ID = $1;`
+    const queryText = `UPDATE images SET likes=likes+1 WHERE id = $1;`
     pool.query(queryText, [req.params.id]).then((result) => {
         console.log('Result from PUT', result);
         res.sendStatus(200);
@@ -31,5 +31,18 @@ router.get('/', (req, res) => {
     });
     
 }); // END GET Route
+
+//POST Route
+router.post('/', (req, res) => {
+    const newImage = req.body;
+    const queryText = `INSERT INTO images ("path", "description") VALUES ('${newImage.path}', '${newImage.description}');`;
+    pool.query(queryText).then((result) => {
+        console.log('Added new image to DB', newImage);
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log('ERROR in POST route', error);
+        res.sendStatus(500);
+    });
+})
 
 module.exports = router;

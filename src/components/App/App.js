@@ -3,12 +3,17 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Title from '../Title/Title';
 import Gallery from '../Gallery/Gallery';
+import Form from'../Form/Form';
 import './App.css';
 
 class App extends Component {
 
   state = {
-    galleryItems: []
+    galleryItems: [],
+    image: {
+      path: '',
+      description: ''
+    }
   }
 
   componentDidMount = () => {
@@ -43,6 +48,32 @@ class App extends Component {
     });
   }
 
+  handleChange = (event, typeParam) => {
+    console.log(event.target.value, typeParam);
+    
+    this.setState({
+      image: {
+        ...this.state.image,
+        [typeParam]: event.target.value
+      }
+    });
+  }
+
+  submitImage = () => {
+    console.log("Submit clicked", this.state.image);
+    
+    Axios({
+      method: 'POST',
+      url: '/gallery',
+      data: this.state.image
+    }).then((response) => {
+      console.log('POST successful', response);
+      this.getPics();
+    }).catch((error) => {
+      console.log('ERROR in POST:', error);
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -50,6 +81,8 @@ class App extends Component {
         <Header/>
 
         <div className="container body">
+
+          <Form submitImage={this.submitImage} handleChange={this.handleChange} image={this.state.image}/>
 
           <Title/>
 

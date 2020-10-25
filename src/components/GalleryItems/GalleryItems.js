@@ -27,16 +27,14 @@ class GalleryItems extends Component {
 
     render() {
         return(
-            // <div className="imgWrapper">
-                <div className="card">
-                        {this.renderItemOrDesc()}
-                    <div className="card-body">
-                        <p className="card-text">{this.props.img.likes} likes</p>
-                        <button className="likeBtn btn btn-outline-primary" onClick={() => this.props.like(this.props.img.id)}>Like</button>
-                        <button className="deleteBtn btn btn-outline-danger">Delete</button>
-                    </div>
+            <div className="card">
+                {this.renderItemOrDesc()}
+                <div className="card-body">
+                    <p className="card-text">{this.props.img.likes} likes</p>
+                    <button className="likeBtn btn btn-outline-primary" onClick={() => this.props.like(this.props.img.id)}>Like</button>
+                    <button className="deleteBtn btn btn-outline-danger">Delete</button>
                 </div>
-            // </div>
+            </div>
         )
     }
 }
