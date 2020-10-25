@@ -7,7 +7,7 @@ class Gallery extends Component{
     render(){
         return(
             <main>
-                <GalleryList imgs={this.props.galleryItems} like={this.props.like}/>
+                <GalleryList imgs={this.props.galleryItems} like={this.props.like} delete={this.props.delete}/>
             </main>
         )
         

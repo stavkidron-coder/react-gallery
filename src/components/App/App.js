@@ -80,6 +80,18 @@ class App extends Component {
     } //end else
   } // end submitImage
 
+  deleteImg = (imgId) => {
+    Axios({
+        method: 'DELETE',
+        url: `gallery/${imgId}`
+    }).then((response) => {
+        console.log(response.data);
+        this.getPics();
+    }).catch((error) => {
+        console.log('ERROR in DELETE', error);
+    });
+}
+
   render() {
     return (
       <div className="App">
@@ -88,11 +100,19 @@ class App extends Component {
 
         <div className="container body">
 
-          <Form submitImage={this.submitImage} handleChange={this.handleChange} image={this.state.image}/>
+          <Form
+            submitImage={this.submitImage}
+            handleChange={this.handleChange}
+            image={this.state.image}
+          />
 
           <Title/>
 
-          <Gallery galleryItems={this.state.galleryItems} like={this.likeButton}/>
+          <Gallery
+            galleryItems={this.state.galleryItems}
+            like={this.likeButton}
+            delete={this.deleteImg}
+          />
 
         </div>
 
