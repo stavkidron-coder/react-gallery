@@ -34,14 +34,26 @@ class GalleryItems extends Component {
         }
     }
 
+    renderLikes = () => {
+        if(this.props.img.likes <= 0){
+            return(
+                <p>No likes yet</p>
+            )
+        } else{
+            return(
+                <p className="card-text">
+                    {this.props.img.likes} likes
+                </p>
+            )
+        } 
+    }
+
     render() {
         return(
             <div className="card">
                 {this.renderItemOrDesc()}
                 <div className="card-body">
-                    <p className="card-text">
-                        {this.props.img.likes} likes
-                    </p>
+                    {this.renderLikes()}
                     <button
                         className="likeBtn btn btn-outline-primary"
                         onClick={() => this.props.like(this.props.img.id)}>
