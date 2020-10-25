@@ -16,26 +16,27 @@ class GalleryItems extends Component {
         if(this.state.renderImg){
             return <img
                 src={this.props.img.path}
-                className="imgs card-img-top"
+                className="imgs card-img-top fadeIn"
                 alt={this.props.img.description}
                 onClick={this.toggleImg}
             />
         } else {
-            return <div onClick={this.toggleImg}>{this.props.img.description}</div>
+            return <p className="descriptions card-img-top fadeIn" onClick={this.toggleImg}>{this.props.img.description}</p>
         }
     }
 
     render() {
         return(
-            <div className="imgWrapper">
+            // <div className="imgWrapper">
                 <div className="card">
                         {this.renderItemOrDesc()}
                     <div className="card-body">
                         <p className="card-text">{this.props.img.likes} likes</p>
-                        <button className="btn btn-outline-primary" onClick={() => this.props.like(this.props.img.id)}>Like</button>
+                        <button className="likeBtn btn btn-outline-primary" onClick={() => this.props.like(this.props.img.id)}>Like</button>
+                        <button className="deleteBtn btn btn-outline-danger">Delete</button>
                     </div>
                 </div>
-            </div>
+            // </div>
         )
     }
 }

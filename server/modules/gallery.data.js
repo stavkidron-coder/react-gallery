@@ -1,38 +1,38 @@
 const galleryItems = [
     {
         id: 1,
-        path: 'images/goat_small.jpg',
-        description: 'Photo of a goat taken at Glacier National Park.',
+        path: 'images/Drums.jpg',
+        description: 'Drums',
         likes: 0
     },
     {
         id: 2,
         path: 'images/SG.jpg',
-        description: 'Photo of Gibson SG.',
+        description: 'Gibson SG',
         likes: 0
     },
     {
         id: 3,
         path: 'images/Synth.jpg',
-        description: 'Photo of synthesizer.',
+        description: 'Synthesizer',
         likes: 0
     },
     {
         id: 4,
         path: 'images/Records.jpg',
-        description: 'Photo of records.',
+        description: 'Records',
         likes: 0
     },
     {
         id: 5,
         path: 'images/Studio.jpg',
-        description: 'Photo of a recording studio.',
+        description: 'Recording studio',
         likes: 0
     },
     {
         id: 6,
         path: 'images/Live_Music_Venue.jpg',
-        description: 'Photo of a music venue.',
+        description: 'Music venue.',
         likes: 0
     },
 ];
