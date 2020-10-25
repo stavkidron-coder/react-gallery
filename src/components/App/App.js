@@ -61,11 +61,12 @@ class App extends Component {
 
   submitImage = () => {
     console.log("Submit clicked", this.state.image);
-
+    //conditional: all fields must be filled
     if(this.state.image.path === '' || this.state.image.description === ''){
       alert('Fill in all fields!');
       return;
     } else{
+      // post new image and description
       Axios({
         method: 'POST',
         url: '/gallery',
