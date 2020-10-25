@@ -23,7 +23,7 @@ class App extends Component {
     }).then((response) => {
       console.log('Get Response:', response.data);
       this.setState({
-        galleryItems: response.data // push images into the galleryItems array
+        galleryItems: response.data
       });
     }).catch((error) => {
       console.log('Error in GET:', error);
