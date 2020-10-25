@@ -61,18 +61,23 @@ class App extends Component {
 
   submitImage = () => {
     console.log("Submit clicked", this.state.image);
-    
-    Axios({
-      method: 'POST',
-      url: '/gallery',
-      data: this.state.image
-    }).then((response) => {
-      console.log('POST successful', response);
-      this.getPics();
-    }).catch((error) => {
-      console.log('ERROR in POST:', error);
-    });
-  }
+
+    if(this.state.image.path === '' || this.state.image.description === ''){
+      alert('Fill in all fields!');
+      return;
+    } else{
+      Axios({
+        method: 'POST',
+        url: '/gallery',
+        data: this.state.image
+      }).then((response) => {
+        console.log('POST successful', response);
+        this.getPics();
+      }).catch((error) => {
+        console.log('ERROR in POST:', error);
+      });
+    } //end else
+  } // end submitImage
 
   render() {
     return (
