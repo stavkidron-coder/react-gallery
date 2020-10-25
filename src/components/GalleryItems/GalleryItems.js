@@ -27,8 +27,10 @@ class GalleryItems extends Component {
             return(
                 <p
                     className="descriptions card-img-top fadeIn"
+                    id="cardP"
                     onClick={this.toggleImg}>
                         {this.props.img.description}
+                    <hr id="card-hr"/>
                 </p>
             )
         }
@@ -37,12 +39,14 @@ class GalleryItems extends Component {
     renderLikes = () => {
         if(this.props.img.likes <= 0){
             return(
-                <p>No likes yet</p>
+                <p className="card-text">
+                    No likes yet
+                </p>
             )
         } else{
             return(
                 <p className="card-text">
-                    {this.props.img.likes} likes
+                    likes: {this.props.img.likes}
                 </p>
             )
         } 

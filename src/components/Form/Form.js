@@ -6,7 +6,7 @@ class Form extends Component{
     render(){
         return(
             <form>
-                <h3>Add a new image:</h3>
+                <h3 id="formH3">Add a new image:</h3>
 
                     <div className="input-group mb-3">
                         <div className="input-group-prepend">
