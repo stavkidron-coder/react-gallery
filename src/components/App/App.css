@@ -71,8 +71,7 @@ hr{
 }
 
 .titleText{
-  text-align: left;
-  margin-left: 10%;
+  text-align: center;
 }
 
 .likeBtn{
@@ -83,6 +82,16 @@ hr{
   margin: auto 1rem;
 }
 
+form{
+  text-align: left;
+  margin-bottom: 2rem;
+  margin-right: 40%;
+}
+
+label{
+  margin-top: 1rem;
+}
+
 .addBtn{
-  margin-left: 1rem;
+  margin-top: 1rem;
 }
