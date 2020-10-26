@@ -25,13 +25,14 @@ class GalleryItems extends Component {
             )
         } else {
             return(
-                <p
-                    className="descriptions card-img-top fadeIn"
-                    id="cardP"
-                    onClick={this.toggleImg}>
-                        {this.props.img.description}
-                    <hr id="card-hr"/>
-                </p>
+                <div>
+                    <p
+                        className="descriptions card-img-top fadeIn"
+                        id="cardP"
+                        onClick={this.toggleImg}>
+                            {this.props.img.description}
+                    </p>
+                </div>
             )
         }
     }
