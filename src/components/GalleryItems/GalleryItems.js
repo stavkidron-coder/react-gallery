@@ -62,12 +62,12 @@ class GalleryItems extends Component {
                     <button
                         className="likeBtn btn btn-outline-primary"
                         onClick={() => this.props.like(this.props.img.id)}>
-                            Like
+                            Like <i class="far fa-thumbs-up"></i>
                     </button>
                     <button
                         className="deleteBtn btn btn-outline-danger"
                         onClick={() => this.props.delete(this.props.img.id)}>
-                            Delete
+                            Delete <i class="far fa-trash-alt"></i>
                     </button>
                 </div>
             </div>
